@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "474464835254",
+    "project_id": "mobile-data-plans-43a92",
+    "storage_bucket": "mobile-data-plans-43a92.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:474464835254:android:0a9c0dc6908b27bb6cb817",
+        "android_client_info": {
+          "package_name": "com.flutterflow.edriveapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "474464835254-dns5hv3e1v6ug6ntj4qpiob9ukkajc3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrQNGwDA0VZI3BhxluAPHX_NkosEu5xP0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "474464835254-dns5hv3e1v6ug6ntj4qpiob9ukkajc3j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "474464835254-kivn26hqkgettqfdnkg2n4vab9gmukk1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.flutterflow.edriveapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
