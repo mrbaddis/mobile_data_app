@@ -6,7 +6,6 @@ import '../flutter_flow/flutter_flow_util.dart';
 
 import 'schema/users_record.dart';
 import 'schema/product_name_record.dart';
-import 'schema/payments_record.dart';
 import 'schema/car_appointments_record.dart';
 import 'schema/serializers.dart';
 
@@ -17,7 +16,6 @@ export 'schema/serializers.dart';
 
 export 'schema/users_record.dart';
 export 'schema/product_name_record.dart';
-export 'schema/payments_record.dart';
 export 'schema/car_appointments_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
@@ -98,48 +96,6 @@ Future<FFFirestorePage<ProductNameRecord>> queryProductNameRecordPage({
     queryCollectionPage(
       ProductNameRecord.collection,
       ProductNameRecord.serializer,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    );
-
-/// Functions to query PaymentsRecords (as a Stream and as a Future).
-Stream<List<PaymentsRecord>> queryPaymentsRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      PaymentsRecord.collection,
-      PaymentsRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<PaymentsRecord>> queryPaymentsRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      PaymentsRecord.collection,
-      PaymentsRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<FFFirestorePage<PaymentsRecord>> queryPaymentsRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-    queryCollectionPage(
-      PaymentsRecord.collection,
-      PaymentsRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

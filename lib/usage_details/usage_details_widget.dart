@@ -144,12 +144,7 @@ class _UsageDetailsWidgetState extends State<UsageDetailsWidget>
               padding: EdgeInsetsDirectional.fromSTEB(24, 50, 24, 0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
-                children: [
-                  Text(
-                    'Your Car',
-                    style: FlutterFlowTheme.of(context).bodyText2,
-                  ),
-                ],
+                children: [],
               ),
             ),
             Padding(
@@ -174,7 +169,7 @@ class _UsageDetailsWidgetState extends State<UsageDetailsWidget>
                       borderRadius: 30,
                       buttonSize: 46,
                       icon: Icon(
-                        Icons.keyboard_arrow_down_rounded,
+                        Icons.arrow_back_ios,
                         color: FlutterFlowTheme.of(context).customColor1,
                         size: 24,
                       ),
@@ -232,7 +227,7 @@ class _UsageDetailsWidgetState extends State<UsageDetailsWidget>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   AutoSizeText(
-                    'usage is meagered in Megabytes',
+                    'usage is measured in Megabytes',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Outfit',
@@ -245,7 +240,7 @@ class _UsageDetailsWidgetState extends State<UsageDetailsWidget>
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
               child: LinearPercentIndicator(
-                percent: 0.4,
+                percent: 1,
                 width: MediaQuery.of(context).size.width * 0.9,
                 lineHeight: 24,
                 animation: true,
@@ -268,7 +263,7 @@ class _UsageDetailsWidgetState extends State<UsageDetailsWidget>
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
                         child: Text(
-                          'used',
+                          'Used',
                           style: FlutterFlowTheme.of(context).bodyText2,
                         ),
                       ),
@@ -292,26 +287,6 @@ class _UsageDetailsWidgetState extends State<UsageDetailsWidget>
                       Text(
                         '229 MB',
                         style: FlutterFlowTheme.of(context).title1,
-                      ),
-                    ],
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
-                        child: Text(
-                          'Plan',
-                          style: FlutterFlowTheme.of(context).bodyText2,
-                        ),
-                      ),
-                      Text(
-                        '1 GB',
-                        style: FlutterFlowTheme.of(context).title1.override(
-                              fontFamily: 'Outfit',
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                            ),
                       ),
                     ],
                   ),

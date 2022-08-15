@@ -68,13 +68,6 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.bio;
-    if (value != null) {
-      result
-        ..add('bio')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.product;
     if (value != null) {
       result
@@ -83,10 +76,17 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
             specifiedType: const FullType(
                 DocumentReference, const [const FullType.nullable(Object)])));
     }
-    value = object.userCity;
+    value = object.firstname;
     if (value != null) {
       result
-        ..add('userCity')
+        ..add('firstname')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.lastname;
+    if (value != null) {
+      result
+        ..add('lastname')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -140,18 +140,18 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
           result.uid = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'bio':
-          result.bio = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'product':
           result.product = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
                 const FullType.nullable(Object)
               ])) as DocumentReference<Object?>?;
           break;
-        case 'userCity':
-          result.userCity = serializers.deserialize(value,
+        case 'firstname':
+          result.firstname = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'lastname':
+          result.lastname = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
         case 'Document__Reference__Field':
@@ -183,11 +183,11 @@ class _$UsersRecord extends UsersRecord {
   @override
   final String? uid;
   @override
-  final String? bio;
-  @override
   final DocumentReference<Object?>? product;
   @override
-  final String? userCity;
+  final String? firstname;
+  @override
+  final String? lastname;
   @override
   final DocumentReference<Object?>? ffRef;
 
@@ -202,9 +202,9 @@ class _$UsersRecord extends UsersRecord {
       this.photoUrl,
       this.phoneNumber,
       this.uid,
-      this.bio,
       this.product,
-      this.userCity,
+      this.firstname,
+      this.lastname,
       this.ffRef})
       : super._();
 
@@ -226,9 +226,9 @@ class _$UsersRecord extends UsersRecord {
         photoUrl == other.photoUrl &&
         phoneNumber == other.phoneNumber &&
         uid == other.uid &&
-        bio == other.bio &&
         product == other.product &&
-        userCity == other.userCity &&
+        firstname == other.firstname &&
+        lastname == other.lastname &&
         ffRef == other.ffRef;
   }
 
@@ -250,9 +250,9 @@ class _$UsersRecord extends UsersRecord {
                                 photoUrl.hashCode),
                             phoneNumber.hashCode),
                         uid.hashCode),
-                    bio.hashCode),
-                product.hashCode),
-            userCity.hashCode),
+                    product.hashCode),
+                firstname.hashCode),
+            lastname.hashCode),
         ffRef.hashCode));
   }
 
@@ -266,9 +266,9 @@ class _$UsersRecord extends UsersRecord {
           ..add('photoUrl', photoUrl)
           ..add('phoneNumber', phoneNumber)
           ..add('uid', uid)
-          ..add('bio', bio)
           ..add('product', product)
-          ..add('userCity', userCity)
+          ..add('firstname', firstname)
+          ..add('lastname', lastname)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -305,17 +305,17 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   String? get uid => _$this._uid;
   set uid(String? uid) => _$this._uid = uid;
 
-  String? _bio;
-  String? get bio => _$this._bio;
-  set bio(String? bio) => _$this._bio = bio;
-
   DocumentReference<Object?>? _product;
   DocumentReference<Object?>? get product => _$this._product;
   set product(DocumentReference<Object?>? product) => _$this._product = product;
 
-  String? _userCity;
-  String? get userCity => _$this._userCity;
-  set userCity(String? userCity) => _$this._userCity = userCity;
+  String? _firstname;
+  String? get firstname => _$this._firstname;
+  set firstname(String? firstname) => _$this._firstname = firstname;
+
+  String? _lastname;
+  String? get lastname => _$this._lastname;
+  set lastname(String? lastname) => _$this._lastname = lastname;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
@@ -335,9 +335,9 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
       _photoUrl = $v.photoUrl;
       _phoneNumber = $v.phoneNumber;
       _uid = $v.uid;
-      _bio = $v.bio;
       _product = $v.product;
-      _userCity = $v.userCity;
+      _firstname = $v.firstname;
+      _lastname = $v.lastname;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -368,9 +368,9 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
             photoUrl: photoUrl,
             phoneNumber: phoneNumber,
             uid: uid,
-            bio: bio,
             product: product,
-            userCity: userCity,
+            firstname: firstname,
+            lastname: lastname,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

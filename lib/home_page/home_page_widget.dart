@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({Key? key}) : super(key: key);
@@ -107,19 +106,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                     ),
                     borderRadius: BorderRadius.circular(8),
                   ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                child: LinearPercentIndicator(
-                  percent: 0.4,
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  lineHeight: 24,
-                  animation: true,
-                  progressColor: FlutterFlowTheme.of(context).primaryColor,
-                  backgroundColor: FlutterFlowTheme.of(context).grayLighter,
-                  barRadius: Radius.circular(40),
-                  padding: EdgeInsets.zero,
                 ),
               ),
               Form(

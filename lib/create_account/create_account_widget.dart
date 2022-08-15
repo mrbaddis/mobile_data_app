@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../create_user/create_user_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -67,14 +66,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Image.asset(
-                        'assets/images/logoFleetWhite@3x.png',
-                        width: 160,
-                        height: 40,
-                        fit: BoxFit.fitWidth,
-                      ),
-                    ],
+                    children: [],
                   ),
                 ),
                 Row(
@@ -324,6 +316,13 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  NavBarPage(initialPage: 'HomePage'),
+                            ),
+                          );
                           if (passwordController?.text !=
                               confirmPasswordController?.text) {
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -344,13 +343,6 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                           if (user == null) {
                             return;
                           }
-
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => CreateUserWidget(),
-                            ),
-                          );
                         },
                         text: 'Create',
                         options: FFButtonOptions(

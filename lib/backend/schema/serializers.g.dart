@@ -8,7 +8,6 @@ part of 'serializers.dart';
 
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CarAppointmentsRecord.serializer)
-      ..add(PaymentsRecord.serializer)
       ..add(ProductNameRecord.serializer)
       ..add(UsersRecord.serializer))
     .build();

@@ -35,34 +35,6 @@ class _$ProductNameRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.productColor;
-    if (value != null) {
-      result
-        ..add('productColor')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.productDefaulTemp;
-    if (value != null) {
-      result
-        ..add('productDefaulTemp')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.productMileage;
-    if (value != null) {
-      result
-        ..add('productMileage')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.productLocation;
-    if (value != null) {
-      result
-        ..add('productLocation')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(LatLng)));
-    }
     value = object.productUser;
     if (value != null) {
       result
@@ -71,13 +43,11 @@ class _$ProductNameRecordSerializer
             specifiedType: const FullType(
                 DocumentReference, const [const FullType.nullable(Object)])));
     }
-    value = object.productPayment;
+    value = object.gig;
     if (value != null) {
       result
-        ..add('productPayment')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                DocumentReference, const [const FullType.nullable(Object)])));
+        ..add('gig')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
     value = object.ffRef;
     if (value != null) {
@@ -110,33 +80,15 @@ class _$ProductNameRecordSerializer
           result.productImage = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'productColor':
-          result.productColor = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
-        case 'productDefaulTemp':
-          result.productDefaulTemp = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
-        case 'productMileage':
-          result.productMileage = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
-        case 'productLocation':
-          result.productLocation = serializers.deserialize(value,
-              specifiedType: const FullType(LatLng)) as LatLng?;
-          break;
         case 'productUser':
           result.productUser = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
                 const FullType.nullable(Object)
               ])) as DocumentReference<Object?>?;
           break;
-        case 'productPayment':
-          result.productPayment = serializers.deserialize(value,
-              specifiedType: const FullType(DocumentReference, const [
-                const FullType.nullable(Object)
-              ])) as DocumentReference<Object?>?;
+        case 'gig':
+          result.gig = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
@@ -157,17 +109,9 @@ class _$ProductNameRecord extends ProductNameRecord {
   @override
   final String? productImage;
   @override
-  final String? productColor;
-  @override
-  final String? productDefaulTemp;
-  @override
-  final String? productMileage;
-  @override
-  final LatLng? productLocation;
-  @override
   final DocumentReference<Object?>? productUser;
   @override
-  final DocumentReference<Object?>? productPayment;
+  final int? gig;
   @override
   final DocumentReference<Object?>? ffRef;
 
@@ -178,12 +122,8 @@ class _$ProductNameRecord extends ProductNameRecord {
   _$ProductNameRecord._(
       {this.productName,
       this.productImage,
-      this.productColor,
-      this.productDefaulTemp,
-      this.productMileage,
-      this.productLocation,
       this.productUser,
-      this.productPayment,
+      this.gig,
       this.ffRef})
       : super._();
 
@@ -201,12 +141,8 @@ class _$ProductNameRecord extends ProductNameRecord {
     return other is ProductNameRecord &&
         productName == other.productName &&
         productImage == other.productImage &&
-        productColor == other.productColor &&
-        productDefaulTemp == other.productDefaulTemp &&
-        productMileage == other.productMileage &&
-        productLocation == other.productLocation &&
         productUser == other.productUser &&
-        productPayment == other.productPayment &&
+        gig == other.gig &&
         ffRef == other.ffRef;
   }
 
@@ -214,19 +150,9 @@ class _$ProductNameRecord extends ProductNameRecord {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc($jc(0, productName.hashCode),
-                                    productImage.hashCode),
-                                productColor.hashCode),
-                            productDefaulTemp.hashCode),
-                        productMileage.hashCode),
-                    productLocation.hashCode),
+            $jc($jc($jc(0, productName.hashCode), productImage.hashCode),
                 productUser.hashCode),
-            productPayment.hashCode),
+            gig.hashCode),
         ffRef.hashCode));
   }
 
@@ -235,12 +161,8 @@ class _$ProductNameRecord extends ProductNameRecord {
     return (newBuiltValueToStringHelper(r'ProductNameRecord')
           ..add('productName', productName)
           ..add('productImage', productImage)
-          ..add('productColor', productColor)
-          ..add('productDefaulTemp', productDefaulTemp)
-          ..add('productMileage', productMileage)
-          ..add('productLocation', productLocation)
           ..add('productUser', productUser)
-          ..add('productPayment', productPayment)
+          ..add('gig', gig)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -258,34 +180,14 @@ class ProductNameRecordBuilder
   String? get productImage => _$this._productImage;
   set productImage(String? productImage) => _$this._productImage = productImage;
 
-  String? _productColor;
-  String? get productColor => _$this._productColor;
-  set productColor(String? productColor) => _$this._productColor = productColor;
-
-  String? _productDefaulTemp;
-  String? get productDefaulTemp => _$this._productDefaulTemp;
-  set productDefaulTemp(String? productDefaulTemp) =>
-      _$this._productDefaulTemp = productDefaulTemp;
-
-  String? _productMileage;
-  String? get productMileage => _$this._productMileage;
-  set productMileage(String? productMileage) =>
-      _$this._productMileage = productMileage;
-
-  LatLng? _productLocation;
-  LatLng? get productLocation => _$this._productLocation;
-  set productLocation(LatLng? productLocation) =>
-      _$this._productLocation = productLocation;
-
   DocumentReference<Object?>? _productUser;
   DocumentReference<Object?>? get productUser => _$this._productUser;
   set productUser(DocumentReference<Object?>? productUser) =>
       _$this._productUser = productUser;
 
-  DocumentReference<Object?>? _productPayment;
-  DocumentReference<Object?>? get productPayment => _$this._productPayment;
-  set productPayment(DocumentReference<Object?>? productPayment) =>
-      _$this._productPayment = productPayment;
+  int? _gig;
+  int? get gig => _$this._gig;
+  set gig(int? gig) => _$this._gig = gig;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
@@ -300,12 +202,8 @@ class ProductNameRecordBuilder
     if ($v != null) {
       _productName = $v.productName;
       _productImage = $v.productImage;
-      _productColor = $v.productColor;
-      _productDefaulTemp = $v.productDefaulTemp;
-      _productMileage = $v.productMileage;
-      _productLocation = $v.productLocation;
       _productUser = $v.productUser;
-      _productPayment = $v.productPayment;
+      _gig = $v.gig;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -331,12 +229,8 @@ class ProductNameRecordBuilder
         new _$ProductNameRecord._(
             productName: productName,
             productImage: productImage,
-            productColor: productColor,
-            productDefaulTemp: productDefaulTemp,
-            productMileage: productMileage,
-            productLocation: productLocation,
             productUser: productUser,
-            productPayment: productPayment,
+            gig: gig,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

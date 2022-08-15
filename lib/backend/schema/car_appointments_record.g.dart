@@ -25,13 +25,6 @@ class _$CarAppointmentsRecordSerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
-    value = object.carName;
-    if (value != null) {
-      result
-        ..add('carName')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.scheduledDate;
     if (value != null) {
       result
@@ -74,6 +67,13 @@ class _$CarAppointmentsRecordSerializer
         ..add('appointmentNumber')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
+    value = object.esim;
+    if (value != null) {
+      result
+        ..add('esim')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -97,10 +97,6 @@ class _$CarAppointmentsRecordSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'carName':
-          result.carName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'scheduledDate':
           result.scheduledDate = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime?;
@@ -127,6 +123,10 @@ class _$CarAppointmentsRecordSerializer
           result.appointmentNumber = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
+        case 'esim':
+          result.esim = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -142,8 +142,6 @@ class _$CarAppointmentsRecordSerializer
 
 class _$CarAppointmentsRecord extends CarAppointmentsRecord {
   @override
-  final String? carName;
-  @override
   final DateTime? scheduledDate;
   @override
   final DocumentReference<Object?>? carRef;
@@ -156,6 +154,8 @@ class _$CarAppointmentsRecord extends CarAppointmentsRecord {
   @override
   final int? appointmentNumber;
   @override
+  final String? esim;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$CarAppointmentsRecord(
@@ -163,13 +163,13 @@ class _$CarAppointmentsRecord extends CarAppointmentsRecord {
       (new CarAppointmentsRecordBuilder()..update(updates))._build();
 
   _$CarAppointmentsRecord._(
-      {this.carName,
-      this.scheduledDate,
+      {this.scheduledDate,
       this.carRef,
       this.description,
       this.status,
       this.type,
       this.appointmentNumber,
+      this.esim,
       this.ffRef})
       : super._();
 
@@ -186,13 +186,13 @@ class _$CarAppointmentsRecord extends CarAppointmentsRecord {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is CarAppointmentsRecord &&
-        carName == other.carName &&
         scheduledDate == other.scheduledDate &&
         carRef == other.carRef &&
         description == other.description &&
         status == other.status &&
         type == other.type &&
         appointmentNumber == other.appointmentNumber &&
+        esim == other.esim &&
         ffRef == other.ffRef;
   }
 
@@ -204,26 +204,26 @@ class _$CarAppointmentsRecord extends CarAppointmentsRecord {
                 $jc(
                     $jc(
                         $jc(
-                            $jc($jc(0, carName.hashCode),
-                                scheduledDate.hashCode),
-                            carRef.hashCode),
-                        description.hashCode),
-                    status.hashCode),
-                type.hashCode),
-            appointmentNumber.hashCode),
+                            $jc($jc(0, scheduledDate.hashCode),
+                                carRef.hashCode),
+                            description.hashCode),
+                        status.hashCode),
+                    type.hashCode),
+                appointmentNumber.hashCode),
+            esim.hashCode),
         ffRef.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'CarAppointmentsRecord')
-          ..add('carName', carName)
           ..add('scheduledDate', scheduledDate)
           ..add('carRef', carRef)
           ..add('description', description)
           ..add('status', status)
           ..add('type', type)
           ..add('appointmentNumber', appointmentNumber)
+          ..add('esim', esim)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -232,10 +232,6 @@ class _$CarAppointmentsRecord extends CarAppointmentsRecord {
 class CarAppointmentsRecordBuilder
     implements Builder<CarAppointmentsRecord, CarAppointmentsRecordBuilder> {
   _$CarAppointmentsRecord? _$v;
-
-  String? _carName;
-  String? get carName => _$this._carName;
-  set carName(String? carName) => _$this._carName = carName;
 
   DateTime? _scheduledDate;
   DateTime? get scheduledDate => _$this._scheduledDate;
@@ -263,6 +259,10 @@ class CarAppointmentsRecordBuilder
   set appointmentNumber(int? appointmentNumber) =>
       _$this._appointmentNumber = appointmentNumber;
 
+  String? _esim;
+  String? get esim => _$this._esim;
+  set esim(String? esim) => _$this._esim = esim;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -274,13 +274,13 @@ class CarAppointmentsRecordBuilder
   CarAppointmentsRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _carName = $v.carName;
       _scheduledDate = $v.scheduledDate;
       _carRef = $v.carRef;
       _description = $v.description;
       _status = $v.status;
       _type = $v.type;
       _appointmentNumber = $v.appointmentNumber;
+      _esim = $v.esim;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -304,13 +304,13 @@ class CarAppointmentsRecordBuilder
   _$CarAppointmentsRecord _build() {
     final _$result = _$v ??
         new _$CarAppointmentsRecord._(
-            carName: carName,
             scheduledDate: scheduledDate,
             carRef: carRef,
             description: description,
             status: status,
             type: type,
             appointmentNumber: appointmentNumber,
+            esim: esim,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

@@ -26,9 +26,18 @@ class EditProfileWidget extends StatefulWidget {
 class _EditProfileWidgetState extends State<EditProfileWidget> {
   String uploadedFileUrl = '';
   TextEditingController? textController1;
-  TextEditingController? emailAddressController;
-  TextEditingController? myBioController;
+  TextEditingController? textController2;
+  TextEditingController? emailAddressController1;
+  TextEditingController? emailAddressController2;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    emailAddressController2 = TextEditingController(text: 'phone');
+    textController1 = TextEditingController(text: 'First name');
+    textController2 = TextEditingController(text: 'Last Name');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -181,14 +190,44 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 16),
                     child: TextFormField(
-                      controller: textController1 ??= TextEditingController(
-                        text: editProfileUsersRecord.displayName,
-                      ),
+                      controller: textController1,
                       obscureText: false,
                       decoration: InputDecoration(
-                        labelText: 'Full Name',
+                        labelText: 'First Name',
                         labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                        hintText: 'Your full name...',
+                        hintText: 'Your first name...',
+                        hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).grayLighter,
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).grayLighter,
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        filled: true,
+                        fillColor: FlutterFlowTheme.of(context).customColor1,
+                        contentPadding:
+                            EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyText1,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 16),
+                    child: TextFormField(
+                      controller: textController2,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        labelText: 'Last Name',
+                        labelStyle: FlutterFlowTheme.of(context).bodyText2,
+                        hintText: 'Your last name...',
                         hintStyle: FlutterFlowTheme.of(context).bodyText2,
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -244,7 +283,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 ? emailAddressUsersRecordList.first
                                 : null;
                         return TextFormField(
-                          controller: emailAddressController ??=
+                          controller: emailAddressController1 ??=
                               TextEditingController(
                             text: editProfileUsersRecord.email,
                           ),
@@ -281,38 +320,67 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 12),
-                    child: TextFormField(
-                      controller: myBioController ??= TextEditingController(
-                        text: editProfileUsersRecord.bio,
+                    child: StreamBuilder<List<UsersRecord>>(
+                      stream: queryUsersRecord(
+                        singleRecord: true,
                       ),
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        labelText: 'Bio',
-                        labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                        hintText: 'A little about you...',
-                        hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).grayLighter,
-                            width: 2,
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: SpinKitCubeGrid(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                size: 50,
+                              ),
+                            ),
+                          );
+                        }
+                        List<UsersRecord> emailAddressUsersRecordList =
+                            snapshot.data!;
+                        // Return an empty Container when the document does not exist.
+                        if (snapshot.data!.isEmpty) {
+                          return Container();
+                        }
+                        final emailAddressUsersRecord =
+                            emailAddressUsersRecordList.isNotEmpty
+                                ? emailAddressUsersRecordList.first
+                                : null;
+                        return TextFormField(
+                          controller: emailAddressController2,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'Phone',
+                            labelStyle: FlutterFlowTheme.of(context).bodyText2,
+                            hintText: 'Your email..',
+                            hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).grayLighter,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).grayLighter,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            filled: true,
+                            fillColor:
+                                FlutterFlowTheme.of(context).customColor1,
+                            contentPadding:
+                                EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                           ),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).grayLighter,
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        filled: true,
-                        fillColor: FlutterFlowTheme.of(context).customColor1,
-                        contentPadding:
-                            EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyText1,
-                      textAlign: TextAlign.start,
-                      maxLines: 3,
+                          style: FlutterFlowTheme.of(context).bodyText1,
+                          keyboardType: TextInputType.phone,
+                        );
+                      },
                     ),
                   ),
                   Align(
@@ -322,10 +390,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                       child: FFButtonWidget(
                         onPressed: () async {
                           final usersUpdateData = createUsersRecordData(
-                            displayName: textController1?.text ?? '',
-                            email: emailAddressController?.text ?? '',
+                            displayName: textController1!.text,
                             photoUrl: uploadedFileUrl,
-                            bio: myBioController?.text ?? '',
                           );
                           await editProfileUsersRecord.reference
                               .update(usersUpdateData);

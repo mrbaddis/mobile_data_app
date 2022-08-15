@@ -84,7 +84,7 @@ class _MyAppState extends State<MyApp> {
               color: Colors.transparent,
               child: Builder(
                 builder: (context) => Image.asset(
-                  'assets/images/martin-katler-DiJR_M1Mv_A-unsplash.jpg',
+                  'assets/images/THYMELESS-BRANDING-white.jpg',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -119,8 +119,8 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'HomePage': HomePageWidget(),
-      'myeSim': MyeSimWidget(),
       'payments': PaymentsWidget(),
+      'Help': HelpWidget(),
       'profilePage': ProfilePageWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
@@ -150,14 +150,6 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.car_repair,
-              size: 24,
-            ),
-            label: '__',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.attach_money_rounded,
               size: 24,
             ),
@@ -166,6 +158,14 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24,
             ),
             label: '•',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.live_help_outlined,
+              size: 24,
+            ),
+            label: '__',
             tooltip: '',
           ),
           BottomNavigationBarItem(

@@ -11,8 +11,6 @@ abstract class CarAppointmentsRecord
   static Serializer<CarAppointmentsRecord> get serializer =>
       _$carAppointmentsRecordSerializer;
 
-  String? get carName;
-
   DateTime? get scheduledDate;
 
   DocumentReference? get carRef;
@@ -25,6 +23,8 @@ abstract class CarAppointmentsRecord
 
   int? get appointmentNumber;
 
+  String? get esim;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -33,11 +33,11 @@ abstract class CarAppointmentsRecord
 
   static void _initializeBuilder(CarAppointmentsRecordBuilder builder) =>
       builder
-        ..carName = ''
         ..description = ''
         ..status = ''
         ..type = ''
-        ..appointmentNumber = 0;
+        ..appointmentNumber = 0
+        ..esim = '';
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
       parent != null
@@ -67,25 +67,25 @@ abstract class CarAppointmentsRecord
 }
 
 Map<String, dynamic> createCarAppointmentsRecordData({
-  String? carName,
   DateTime? scheduledDate,
   DocumentReference? carRef,
   String? description,
   String? status,
   String? type,
   int? appointmentNumber,
+  String? esim,
 }) {
   final firestoreData = serializers.toFirestore(
     CarAppointmentsRecord.serializer,
     CarAppointmentsRecord(
       (c) => c
-        ..carName = carName
         ..scheduledDate = scheduledDate
         ..carRef = carRef
         ..description = description
         ..status = status
         ..type = type
-        ..appointmentNumber = appointmentNumber,
+        ..appointmentNumber = appointmentNumber
+        ..esim = esim,
     ),
   );
 

@@ -6,15 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CreateAppointmentWidget extends StatefulWidget {
-  const CreateAppointmentWidget({Key? key}) : super(key: key);
+class SupportWidget extends StatefulWidget {
+  const SupportWidget({Key? key}) : super(key: key);
 
   @override
-  _CreateAppointmentWidgetState createState() =>
-      _CreateAppointmentWidgetState();
+  _SupportWidgetState createState() => _SupportWidgetState();
 }
 
-class _CreateAppointmentWidgetState extends State<CreateAppointmentWidget> {
+class _SupportWidgetState extends State<SupportWidget> {
   String? serviceTypeValue;
   TextEditingController? shortBioController;
   TextEditingController? supportTitleController;

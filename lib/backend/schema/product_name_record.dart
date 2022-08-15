@@ -15,17 +15,9 @@ abstract class ProductNameRecord
 
   String? get productImage;
 
-  String? get productColor;
-
-  String? get productDefaulTemp;
-
-  String? get productMileage;
-
-  LatLng? get productLocation;
-
   DocumentReference? get productUser;
 
-  DocumentReference? get productPayment;
+  int? get gig;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
@@ -34,9 +26,7 @@ abstract class ProductNameRecord
   static void _initializeBuilder(ProductNameRecordBuilder builder) => builder
     ..productName = ''
     ..productImage = ''
-    ..productColor = ''
-    ..productDefaulTemp = ''
-    ..productMileage = '';
+    ..gig = 0;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('productName');
@@ -62,12 +52,8 @@ abstract class ProductNameRecord
 Map<String, dynamic> createProductNameRecordData({
   String? productName,
   String? productImage,
-  String? productColor,
-  String? productDefaulTemp,
-  String? productMileage,
-  LatLng? productLocation,
   DocumentReference? productUser,
-  DocumentReference? productPayment,
+  int? gig,
 }) {
   final firestoreData = serializers.toFirestore(
     ProductNameRecord.serializer,
@@ -75,12 +61,8 @@ Map<String, dynamic> createProductNameRecordData({
       (p) => p
         ..productName = productName
         ..productImage = productImage
-        ..productColor = productColor
-        ..productDefaulTemp = productDefaulTemp
-        ..productMileage = productMileage
-        ..productLocation = productLocation
         ..productUser = productUser
-        ..productPayment = productPayment,
+        ..gig = gig,
     ),
   );
 

@@ -154,7 +154,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           decoration: InputDecoration(
                             labelText: 'Password',
                             labelStyle: FlutterFlowTheme.of(context).bodyText2,
-                            hintText: 'Enter your email here...',
+                            hintText: 'Enter your password here...',
                             hintStyle: FlutterFlowTheme.of(context).bodyText2,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -254,6 +254,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   NavBarPage(initialPage: 'HomePage'),
                             ),
                           );
+
+                          final user = await signInWithEmail(
+                            context,
+                            emailAddressController!.text,
+                            passwordController!.text,
+                          );
+                          if (user == null) {
+                            return;
+                          }
                         },
                         text: 'Login',
                         options: FFButtonOptions(
