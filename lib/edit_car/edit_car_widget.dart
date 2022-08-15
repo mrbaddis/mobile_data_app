@@ -127,7 +127,9 @@ class _EditCarWidgetState extends State<EditCarWidget>
                   return Container();
                 }
                 final columnProductNameRecord =
-                    columnProductNameRecordList.first;
+                    columnProductNameRecordList.isNotEmpty
+                        ? columnProductNameRecordList.first
+                        : null;
                 return SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -436,7 +438,9 @@ class _EditCarWidgetState extends State<EditCarWidget>
                                 return Container();
                               }
                               final buttonProductNameRecord =
-                                  buttonProductNameRecordList.first;
+                                  buttonProductNameRecordList.isNotEmpty
+                                      ? buttonProductNameRecordList.first
+                                      : null;
                               return FFButtonWidget(
                                 onPressed: () async {
                                   final productNameUpdateData =

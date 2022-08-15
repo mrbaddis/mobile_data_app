@@ -1,10 +1,8 @@
 import '../backend/backend.dart';
-import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../flutter_flow/upload_media.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,8 +16,8 @@ class AddSimWidget extends StatefulWidget {
 
 class _AddSimWidgetState extends State<AddSimWidget>
     with TickerProviderStateMixin {
-  String uploadedFileUrl = '';
   TextEditingController? simIdController;
+  bool? emailqrcodeValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
     'imageOnPageLoadAnimation': AnimationInfo(
@@ -68,7 +66,7 @@ class _AddSimWidgetState extends State<AddSimWidget>
           ),
         ),
         title: Text(
-          'Add Your Car',
+          'Add Your eSim',
           style: FlutterFlowTheme.of(context).subtitle2,
         ),
         actions: [],
@@ -101,7 +99,10 @@ class _AddSimWidgetState extends State<AddSimWidget>
             if (snapshot.data!.isEmpty) {
               return Container();
             }
-            final columnProductNameRecord = columnProductNameRecordList.first;
+            final columnProductNameRecord =
+                columnProductNameRecordList.isNotEmpty
+                    ? columnProductNameRecordList.first
+                    : null;
             return SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -111,80 +112,12 @@ class _AddSimWidgetState extends State<AddSimWidget>
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        'assets/images/carFull@2x.png',
+                        'assets/images/Screen_Shot_2022-08-14_at_4.13.28_PM.png',
                         width: MediaQuery.of(context).size.width,
                         height: 200,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                       ).animated([animationsMap['imageOnPageLoadAnimation']!]),
                     ],
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 16),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FFButtonWidget(
-                          onPressed: () async {
-                            final selectedMedia = await selectMedia(
-                              mediaSource: MediaSource.photoGallery,
-                              multiImage: false,
-                            );
-                            if (selectedMedia != null &&
-                                selectedMedia.every((m) => validateFileFormat(
-                                    m.storagePath, context))) {
-                              showUploadMessage(
-                                context,
-                                'Uploading file...',
-                                showLoading: true,
-                              );
-                              final downloadUrls = (await Future.wait(
-                                      selectedMedia.map((m) async =>
-                                          await uploadData(
-                                              m.storagePath, m.bytes))))
-                                  .where((u) => u != null)
-                                  .map((u) => u!)
-                                  .toList();
-                              ScaffoldMessenger.of(context)
-                                  .hideCurrentSnackBar();
-                              if (downloadUrls.length == selectedMedia.length) {
-                                setState(
-                                    () => uploadedFileUrl = downloadUrls.first);
-                                showUploadMessage(
-                                  context,
-                                  'Success!',
-                                );
-                              } else {
-                                showUploadMessage(
-                                  context,
-                                  'Failed to upload media',
-                                );
-                                return;
-                              }
-                            }
-                          },
-                          text: 'Upload Photo',
-                          options: FFButtonOptions(
-                            width: 130,
-                            height: 40,
-                            color: Colors.white,
-                            textStyle:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Color(0xFF39D2C0),
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                            elevation: 2,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1,
-                            ),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                      ],
-                    ),
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 16),
@@ -215,6 +148,29 @@ class _AddSimWidgetState extends State<AddSimWidget>
                             EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1,
+                      keyboardType: TextInputType.number,
+                    ),
+                  ),
+                  Theme(
+                    data: ThemeData(
+                      unselectedWidgetColor: Color(0xFF95A1AC),
+                    ),
+                    child: CheckboxListTile(
+                      value: emailqrcodeValue ??= true,
+                      onChanged: (newValue) =>
+                          setState(() => emailqrcodeValue = newValue!),
+                      title: Text(
+                        'E-mail me QR code?',
+                        style: FlutterFlowTheme.of(context).title3,
+                      ),
+                      subtitle: Text(
+                        'QR code will be sent to your E-mail',
+                        style: FlutterFlowTheme.of(context).subtitle2,
+                      ),
+                      tileColor: Color(0xFFF5F5F5),
+                      activeColor: FlutterFlowTheme.of(context).primaryColor,
+                      dense: false,
+                      controlAffinity: ListTileControlAffinity.trailing,
                     ),
                   ),
                   Align(
@@ -225,11 +181,11 @@ class _AddSimWidgetState extends State<AddSimWidget>
                         onPressed: () {
                           print('Button pressed ...');
                         },
-                        text: 'Complete Account',
+                        text: 'Add eSim',
                         options: FFButtonOptions(
                           width: 230,
                           height: 50,
-                          color: Color(0xFF39D2C0),
+                          color: Color(0xFF043362),
                           textStyle:
                               FlutterFlowTheme.of(context).subtitle2.override(
                                     fontFamily: 'Lexend Deca',
