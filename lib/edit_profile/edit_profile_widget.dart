@@ -240,7 +240,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           return Container();
                         }
                         final emailAddressUsersRecord =
-                            emailAddressUsersRecordList.first;
+                            emailAddressUsersRecordList.isNotEmpty
+                                ? emailAddressUsersRecordList.first
+                                : null;
                         return TextFormField(
                           controller: emailAddressController ??=
                               TextEditingController(

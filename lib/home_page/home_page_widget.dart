@@ -1,6 +1,8 @@
+import '../add_sim/add_sim_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
 import '../usage_details/usage_details_widget.dart';
 import 'package:flutter/material.dart';
@@ -79,6 +81,34 @@ class _HomePageWidgetState extends State<HomePageWidget>
                 height: 240,
                 fit: BoxFit.contain,
               ).animated([animationsMap['imageOnPageLoadAnimation']!]),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 25),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddSimWidget(),
+                      ),
+                    );
+                  },
+                  text: 'Add A line',
+                  options: FFButtonOptions(
+                    width: 130,
+                    height: 40,
+                    color: Color(0xFF043362),
+                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Outfit',
+                          color: Colors.white,
+                        ),
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
                 child: LinearPercentIndicator(

@@ -44,7 +44,9 @@ class _NexworkWidgetState extends State<NexworkWidget> {
         if (snapshot.data!.isEmpty) {
           return Container();
         }
-        final nexworkProductNameRecord = nexworkProductNameRecordList.first;
+        final nexworkProductNameRecord = nexworkProductNameRecordList.isNotEmpty
+            ? nexworkProductNameRecordList.first
+            : null;
         return Scaffold(
           key: scaffoldKey,
           resizeToAvoidBottomInset: false,
@@ -58,12 +60,12 @@ class _NexworkWidgetState extends State<NexworkWidget> {
                       controller: googleMapsController,
                       onCameraIdle: (latLng) => googleMapsCenter = latLng,
                       initialLocation: googleMapsCenter ??=
-                          nexworkProductNameRecord.productLocation!,
+                          nexworkProductNameRecord!.productLocation!,
                       markers: [
                         if (nexworkProductNameRecord != null)
                           FlutterFlowMarker(
-                            nexworkProductNameRecord.reference.path,
-                            nexworkProductNameRecord.productLocation!,
+                            nexworkProductNameRecord!.reference.path,
+                            nexworkProductNameRecord!.productLocation!,
                           ),
                       ],
                       markerColor: GoogleMarkerColor.blue,

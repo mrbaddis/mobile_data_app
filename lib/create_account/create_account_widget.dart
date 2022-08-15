@@ -48,9 +48,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).tertiaryColor,
           image: DecorationImage(
-            fit: BoxFit.fitWidth,
+            fit: BoxFit.cover,
             image: Image.asset(
-              'assets/images/bgFleet@2x.png',
+              'assets/images/THYMELESS-BRANDING-white.jpg',
             ).image,
           ),
         ),
@@ -101,7 +101,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                           style: FlutterFlowTheme.of(context).title3.override(
                                 fontFamily: 'Outfit',
                                 color: FlutterFlowTheme.of(context).alternate,
-                                fontWeight: FontWeight.w100,
+                                fontWeight: FontWeight.normal,
                               ),
                         ),
                       ),

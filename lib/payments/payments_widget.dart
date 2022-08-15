@@ -38,7 +38,7 @@ class _PaymentsWidgetState extends State<PaymentsWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Your Balance',
+                          'Your Bill',
                           style: FlutterFlowTheme.of(context).bodyText2,
                         ),
                         Text(
@@ -111,40 +111,6 @@ class _PaymentsWidgetState extends State<PaymentsWidget> {
                 indent: 20,
                 endIndent: 20,
                 color: FlutterFlowTheme.of(context).grayLighter,
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24, 16, 24, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      'Remaining Payments',
-                      style: FlutterFlowTheme.of(context).bodyText2,
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24, 4, 24, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      '\$14,502',
-                      style: FlutterFlowTheme.of(context).title1,
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
-                      child: Text(
-                        '/ \$24,999',
-                        style: FlutterFlowTheme.of(context).subtitle2.override(
-                              fontFamily: 'Outfit',
-                              color: FlutterFlowTheme.of(context).grayLight,
-                            ),
-                      ),
-                    ),
-                  ],
-                ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 16),
@@ -312,13 +278,6 @@ class _PaymentsWidgetState extends State<PaymentsWidget> {
                       ],
                     ),
                   ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24, 16, 0, 0),
-                child: Text(
-                  'Past Payment',
-                  style: FlutterFlowTheme.of(context).bodyText2,
                 ),
               ),
             ],
